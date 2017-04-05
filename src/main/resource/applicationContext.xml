@@ -23,20 +23,20 @@
 <property name="locations">
 <value>classpath:data-source-test.properties</value>
 </property>
-<property name="placeholderPrefix" value="${dbtest."/> <!-- para poder usarlo con prefijo  -->
  <property name="ignoreUnresolvablePlaceholders" value="true"/>
+ <property name="placeholderPrefix" value="dbtest."/> <!-- para poder usarlo con prefijo  --> 
 </bean>
 
 <!-- Archivo propiedades de Producción  -->
-<!-- 
+
 <bean id="propertyPlaceholderConfigurerPro" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 <property name="locations">
 <value>classpath:data-source.properties</value>
  </property>
- <property name="placeholderPrefix" value="${dbprod."/>
+ <property name="placeholderPrefix" value="dbprod."/>
  <property name="ignoreUnresolvablePlaceholders" value="true"/>
 </bean>
--->
+
 <!-- 
  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -93,16 +93,16 @@
 	
 	<!-- bean connectionMgr con las propiedades recuperadas del propertie -->
 	<bean id="connectionMgr" class="com.grupoatrium.persistencia.impl.ConnectionMgr" primary="true" >
-	    <property name="driver" value="${driver}" />
-		<property name="url" value="${url}" />
-		<property name="usuario" value="${user}" />
-		<property name="password" value="${pw}" />
+	    <property name="driver" value="${dbtest.driver}" />
+		<property name="url" value="${dbtest.url}" />
+		<property name="usuario" value="${dbtest.user}" />
+		<property name="password" value="${dbtest.pw}" />
 	 </bean>
 	<bean id="connectionMgr2" class="com.grupoatrium.persistencia.impl.ConnectionMgr" >
-	    <property name="driver" value="${driver}" />
-		<property name="url" value="${url}" />
-		<property name="usuario" value="${user}" />
-		<property name="password" value="${pw}" />
+	    <property name="driver" value="${dbprod.driver}" />
+		<property name="url" value="${dbprod.url}" />
+		<property name="usuario" value="${dbprod.user}" />
+		<property name="password" value="${dbprod.pw}" />
 	 </bean>
 	
 	<!-- bean abstracto sin clase asociada  -->
