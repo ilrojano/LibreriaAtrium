@@ -1,15 +1,15 @@
 /**
  * 
  */
-package grupoatrium.cliente;
-
-import grupoatrium.modelo.Autor;
+package com.grupoatrium.cliente;
 
 import java.util.List;
 import java.util.Properties;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.grupoatrium.modelo.Autor;
 
 /**
  * @author ilr00819

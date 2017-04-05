@@ -1,7 +1,7 @@
 /**
  * 
  */
-package grupoatrium.persistencia.impl;
+package com.grupoatrium.persistencia.impl;
 
 /**
  * @author ilr00819

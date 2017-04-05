@@ -52,20 +52,20 @@
  -->
  
 	<!-- bean autor  inicializado por inyeccion de propiedades -->
-	<bean id="autor1" class="grupoatrium.modelo.Autor" >
+	<bean id="autor1" class="com.grupoatrium.modelo.Autor" >
 	<property name="nombre" value="Craig Walls"/>
 	<property name="comentarios" value=" Libro principal:Spring Cuarta Edición"></property>
 	<property name="nacionalidad" value="francesa"></property>
 	</bean>
 	
 	
-	<bean id="editrorial1" class="grupoatrium.modelo.Editorial" p:nif="1234567-Q"  p:nombre="ANAYA" p:direccion-ref="direccion1" >
+	<bean id="editrorial1" class="com.grupoatrium.modelo.Editorial" p:nif="1234567-Q"  p:nombre="ANAYA" p:direccion-ref="direccion1" >
 	</bean>
 	
-	<util:list id="listaAutores" value-type="grupoatrium.modelo.Autor">
+	<util:list id="listaAutores" value-type="com.grupoatrium.modelo.Autor">
 		<ref bean="autor1"/>
 		<!-- bean interno -->
-		<bean id="autor2" class="grupoatrium.modelo.Autor" >
+		<bean id="autor2" class="com.grupoatrium.modelo.Autor" >
 		<property name="nombre" value="IvanLopez"/>
 		<property name="comentarios" value=" comentarios"></property>
 		<property name="nacionalidad" value="Española"></property>
@@ -73,7 +73,7 @@
 	</util:list>
 	
 	<!-- bean libro inicializado por constructor index -->
-	<bean id="libro1"  class="grupoatrium.modelo.Libro">
+	<bean id="libro1"  class="com.grupoatrium.modelo.Libro">
 	<constructor-arg index="0" value="isb123133"></constructor-arg>
 	<constructor-arg index="2" ref="listaAutores"></constructor-arg>
 	<constructor-arg index="6" value="yo mismo"></constructor-arg>
@@ -83,22 +83,22 @@
 	<constructor-arg index="1" value="Is my Life"></constructor-arg>
 	</bean>
 		<!-- bean libro inicializado por constructor con nombre C: -->
-	<bean id="libroC"  class="grupoatrium.modelo.Libro" c:autores-ref="listaAutores"  c:descripcion="c_descripcion"
+	<bean id="libroC"  class="com.grupoatrium.modelo.Libro" c:autores-ref="listaAutores"  c:descripcion="c_descripcion"
 	 c:editorial-ref="editrorial1" c:isbn="c_isb6564564" c:precio="10.23" c:publicacion="3" c:titulo="c_titulo"/>
 	
 	<!-- bean direccion1 -->
-	<bean id="direccion1" class="grupoatrium.modelo.Direccion" p:calle="Avenida Monasterio de Silos" p:cp="28049" p:numero="35" p:poblacion="Madrid" p:provincia="Madrid"></bean>
+	<bean id="direccion1" class="com.grupoatrium.modelo.Direccion" p:calle="Avenida Monasterio de Silos" p:cp="28049" p:numero="35" p:poblacion="Madrid" p:provincia="Madrid"></bean>
 
 	
 	
 	<!-- bean connectionMgr con las propiedades recuperadas del propertie -->
-	<bean id="connectionMgr" class="grupoatrium.persistencia.impl.ConnectionMgr" primary="true" >
+	<bean id="connectionMgr" class="com.grupoatrium.persistencia.impl.ConnectionMgr" primary="true" >
 	    <property name="driver" value="${driver}" />
 		<property name="url" value="${url}" />
 		<property name="usuario" value="${user}" />
 		<property name="password" value="${pw}" />
 	 </bean>
-	<bean id="connectionMgr2" class="grupoatrium.persistencia.impl.ConnectionMgr" >
+	<bean id="connectionMgr2" class="com.grupoatrium.persistencia.impl.ConnectionMgr" >
 	    <property name="driver" value="${driver}" />
 		<property name="url" value="${url}" />
 		<property name="usuario" value="${user}" />
@@ -111,11 +111,11 @@
 	</bean>
 
 	<bean id="librosDAO" parent="abstConnMgr"
-		class="grupoatrium.persistencia.impl.LibrosDAO"  autowire="byType">
+		class="com.grupoatrium.persistencia.impl.LibrosDAO"  autowire="byType">
 	</bean>
 	
 	<bean id="editorialesDAO"
-		class="grupoatrium.persistencia.impl.EditorialesDAO"
+		class="com.grupoatrium.persistencia.impl.EditorialesDAO"
 		parent="abstConnMgr" autowire="byType">
 	</bean>
 </beans>

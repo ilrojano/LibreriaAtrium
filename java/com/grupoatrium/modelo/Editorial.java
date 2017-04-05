@@ -1,7 +1,7 @@
 /**
  * 
  */
-package grupoatrium.modelo;
+package com.grupoatrium.modelo;
 
 /**
  * @author ilr00819

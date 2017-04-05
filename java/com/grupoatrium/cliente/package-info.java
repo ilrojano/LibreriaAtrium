@@ -5,4 +5,4 @@
  * @author ilr00819
  *
  */
-package grupoatrium.cliente;
+package com.grupoatrium.cliente;

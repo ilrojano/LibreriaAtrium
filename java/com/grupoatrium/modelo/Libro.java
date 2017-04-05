@@ -1,4 +1,4 @@
-package grupoatrium.modelo;
+package com.grupoatrium.modelo;
 
 import java.util.List;
 
