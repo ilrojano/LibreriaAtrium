@@ -10,19 +10,19 @@ package com.grupoatrium.persistencia.impl;
 public class EditorialesDAO  {
 
 
-	private ConnectionMgr ConnMgr;
+	private ConnectionMgrTest ConnMgr;
 
 	/**
 	 * @return the ConnMgr
 	 */
-	public ConnectionMgr getConnMgr() {
+	public ConnectionMgrTest getConnMgr() {
 		return ConnMgr;
 	}
 
 	/**
 	 * @param mgr the ConnMgr to set
 	 */
-	public void setConnMgr(ConnectionMgr ConnMgr) {
+	public void setConnMgr(ConnectionMgrTest ConnMgr) {
 		this.ConnMgr = ConnMgr;
 	}
 	

@@ -8,10 +8,10 @@ package com.grupoatrium.modelo;
  *
  */
 public class Editorial {
-
+	private String nif;
 	private String nombre;
 	private Direccion direccion;
-	private String nif;
+	
 	/**
 	 * @return the nombre
 	 */
