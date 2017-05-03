@@ -66,6 +66,7 @@ plantillaAutor.update(SQL_INSERT, paramMap);
 					}
 		});
 	}
+	
 
 	/**
 	 * @return the plantillaAutor
