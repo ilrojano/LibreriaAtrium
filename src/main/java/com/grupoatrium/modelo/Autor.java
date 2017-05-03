@@ -54,5 +54,19 @@ public class Autor {
 		return "Autor [nombre=" + nombre + ", nacionalidad=" + nacionalidad
 				+ ", comentarios=" + comentarios + "]";
 	}
+	/**
+	 * @param nombre
+	 * @param nacionalidad
+	 * @param comentarios
+	 */
+	public Autor(String nombre, String nacionalidad, String comentarios) {
+		super();
+		this.nombre = nombre;
+		this.nacionalidad = nacionalidad;
+		this.comentarios = comentarios;
+	}
+	public Autor(){
+		
+	}
 	
 }

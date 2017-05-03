@@ -9,6 +9,10 @@ import java.util.Map;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import com.grupoatrium.modelo.Autor;
 
@@ -20,6 +24,7 @@ public class AutorDAOTest {
 
 	NamedParameterJdbcTemplate plantillaAutor;
 	RowMapper<Autor> rowmapperAutor;
+	TransactionTemplate transactionTemplate;
 	/**
 	 * devuelve el autor que coincide con el nombre
 	 * @param nombre
@@ -37,9 +42,29 @@ public class AutorDAOTest {
 	 */
 	public List<Autor> findAllAutor(){
 		final String SQL_ALL_AUTORES="SELECT * FROM AUTOR ";
-		return (List<Autor>) plantillaAutor.query(SQL_ALL_AUTORES,  rowmapperAutor);
-		
-		
+		return (List<Autor>) plantillaAutor.query(SQL_ALL_AUTORES,  rowmapperAutor);	
+	}
+	
+	/**
+	 * Creacion de autor a traves de una transaccion programatica
+	 * @param autor
+	 */
+	public void createAutor(Autor autor){
+		transactionTemplate.execute(new TransactionCallback<Autor>(
+				) {
+
+					@Override
+					public Autor doInTransaction(TransactionStatus status) {
+String SQL_INSERT="INSERT INTO AUTOR VALUES(:aut,:naci,:comment)";
+Map<String,Object> paramMap= new HashMap<String, Object>();
+paramMap.put("aut", autor.getNombre());
+paramMap.put("naci",autor.getNacionalidad());
+paramMap.put("comment", autor.getComentarios());
+plantillaAutor.update(SQL_INSERT, paramMap);
+						
+						return autor;
+					}
+		});
 	}
 
 	/**
@@ -68,6 +93,20 @@ public class AutorDAOTest {
 	 */
 	public void setRowmapperAutor(RowMapper<Autor> rowmapperAutor) {
 		this.rowmapperAutor = rowmapperAutor;
+	}
+	
+	/**
+	 * @return the transactionTemplate
+	 */
+	public TransactionTemplate getTransactionTemplate() {
+		return transactionTemplate;
+	}
+	
+	/**
+	 * @param transactionTemplate the transactionTemplate to set
+	 */
+	public void setTransactionTemplate(TransactionTemplate transactionTemplate) {
+		this.transactionTemplate = transactionTemplate;
 	}
 	
 	

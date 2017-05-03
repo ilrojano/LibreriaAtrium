@@ -52,7 +52,12 @@ public class principalTest {
 				 
 				 System.out.println("libro creado "+libroTest.findLibros("ivan23213123"));
 				 
-							
+					
+				 System.out.println("creacion de Autor por tx programatica");
+				 AutorDAOTest autorDao = context.getBean("autorDaoTest",AutorDAOTest.class);
+				 autorDao.createAutor(new Autor("Mario", "ESPAÑOLA", "my sun"));
+				 System.out.println("Listar todos los autores:"+autorDao.findAllAutor());
+				 
 	}
 
 }
